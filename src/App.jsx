@@ -1,9 +1,17 @@
+import { useQuery } from '@apollo/client'
 import Authors from './components/Authors'
 import Books from './components/Books'
 import NewBook from './components/NewBook'
 import { NavLink, Route, Routes } from 'react-router-dom'
+import { ALL_AUTHORS } from './queries'
 
 const App = () => {
+  const result = useQuery(ALL_AUTHORS)
+
+  if (result.loading) {
+    return <div>loading...</div>
+  }
+
   return (
     <>
       <div>
@@ -14,7 +22,7 @@ const App = () => {
       <Routes>
         <Route
           path='/'
-          element={<Authors />}
+          element={<Authors authors={result.data.allAuthors} />}
         />
         <Route
           path='/books'
