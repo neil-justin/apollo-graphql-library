@@ -1,6 +1,4 @@
 const Authors = ({ authors }) => {
-  console.log('authors', authors)
-
   return (
     <div>
       <h2>authors</h2>

@@ -26,7 +26,7 @@ const App = () => {
         />
         <Route
           path='/books'
-          element={<Books />}
+          element={<Books/>}
         />
         <Route
           path='/new-book'
