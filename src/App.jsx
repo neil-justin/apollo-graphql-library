@@ -3,13 +3,15 @@ import Authors from './components/Authors'
 import Books from './components/Books'
 import NewBook from './components/NewBook'
 import { NavLink, Route, Routes } from 'react-router-dom'
-import { ALL_AUTHORS } from './queries'
+import { ALL_AUTHORS, ALL_BOOKS } from './queries'
 import { useState } from 'react'
 import LoginForm from './components/LoginForm'
+import Recommendations from './components/Recommendations'
 
 const App = () => {
   const [token, setToken] = useState(null)
 
+  const books = useQuery(ALL_BOOKS)
   const result = useQuery(ALL_AUTHORS)
   const client = useApolloClient()
 
@@ -31,6 +33,7 @@ const App = () => {
         {token ? (
           <>
             <NavLink to='/new-book'>add book </NavLink>
+            <NavLink to='/recommendations'>recommendations </NavLink>
             <button onClick={logout}>logout</button>
           </>
         ) : (
@@ -54,6 +57,10 @@ const App = () => {
         <Route
           path='/login'
           element={<LoginForm setToken={setToken} />}
+        />
+        <Route
+          path='/recommendations'
+          element={<Recommendations books={books.data.allBooks} />}
         />
       </Routes>
     </>
