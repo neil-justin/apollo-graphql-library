@@ -34,7 +34,7 @@ const NewBook = () => {
 
   return (
     <div>
-      <h1>add a book</h1>
+      <h2>add a book</h2>
       <form onSubmit={submit}>
         <div>
           <label htmlFor='title'>title </label>
