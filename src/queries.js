@@ -54,4 +54,12 @@ const UPDATE_BIRTHYEAR = gql`
   }
 `
 
-export { ALL_AUTHORS, ALL_BOOKS, CREATE_BOOK, UPDATE_BIRTHYEAR }
+const LOGIN = gql`
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password)  {
+      value
+    }
+  }
+`
+
+export { ALL_AUTHORS, ALL_BOOKS, CREATE_BOOK, UPDATE_BIRTHYEAR, LOGIN }
